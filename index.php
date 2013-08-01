@@ -11,5 +11,9 @@ $app->get('/', function() use ($app) {
 $app->get('/page/:number',function($number) {
       echo $number;
     });
+
+$app->get('/testDB', function() use ($app) {
+      $app->render('../model/test_db_init.php');
+    });
 $app->run();
 ?>
