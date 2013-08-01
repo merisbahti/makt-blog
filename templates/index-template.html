@@ -40,7 +40,7 @@
 		<div class="container">
 			<div class="post panel" style="background-color:#EEE">
 				<div class="post panel-heading">
-  					<h1>Example page header <small>Subtext for header</small></h1>
+  					<h1>Example page header <?php echo $foo ?> <small>Subtext for header</small></h1>
 				</div>
 				<img src="./img/WP_20130620_007.jpg" class="img-responsive"/>
 				<p>
@@ -54,9 +54,14 @@ Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
 					<a href="#" class="pull-right">Arthur Author - 2013-05-07</a>
 				</div>
 			</div>
-		</div>
+
+      <ul class="pager">
+      <li class="previous"><a href="#">&larr; Older</a></li>
+      <li class="next"><a href="#">Newer &rarr;</a></li>
+    </ul>
+    </div>
 
 		<script src="./js/jquery.js"></script>
-		<script type="./text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	</body>
 </html>

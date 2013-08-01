@@ -3,6 +3,8 @@
 $app = new \Slim\Slim();
 
 $app->get('/', function() use ($app) {
+      $view = $app->view();
+      $view->setData("foo", "bar");
       $app->render('index-template.html');
     });
 
