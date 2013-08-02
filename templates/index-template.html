@@ -18,50 +18,33 @@
 				</button>
 				<div class="nav-collapse collapse bs-navbar-collapse">
 					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">Start</a>
+						</li>
 						<li class="active">
-							<a href="#">Getting started</a>
+							<a href="#">Nyheter</a>
 						</li>
 						<li>
-							<a href="#">CSS</a>
-						</li>
-						<li>
-							<a href="#">Components</a>
-						</li>
-						<li>
-							<a href="#">JavaScript</a>
-						</li>
-						<li>
-							<a href="#">Customize</a>
+							<a href="#">Om oss</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<div class="container">
-			<div class="panel post" style="background-color:#EEE">
-				<div class="panel-heading post">
-  					<h1>Example page header <?php echo $foo ?></h1>
-  					<h1 class="subheader"><small>Subtext for header</small></h1>
-				</div>
-				<img src="./img/WP_20130620_007.jpg" class="img-responsive"/>
-				<p style="margin-top:0px;">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel neque pellentesque, lobortis diam at, feugiat augue. Aenean suscipit sed sapien eget consequat. Ut et accumsan nisi, at semper mauris. Nulla facilisi. Mauris luctus euismod consequat. Vivamus quis lorem tempor, placerat libero a, facilisis ipsum. Maecenas lacinia a neque at faucibus. In gravida tincidunt iaculis. Etiam interdum elit turpis, mollis gravida neque sagittis eget. Duis vel semper sem. Nulla faucibus pharetra massa quis facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse mi nunc, vestibulum in ultrices et, auctor in magna. Proin id mattis eros. Mauris ut justo malesuada nulla iaculis vehicula eleifend eget lectus. Quisque congue suscipit ipsum, sit amet ullamcorper turpis fermentum vitae.
 
-Pellentesque erat nulla, lacinia eu ultrices quis, sollicitudin et ligula. Nullam vitae ante non sapien sodales ultrices. Morbi dictum leo odio, nec imperdiet massa vestibulum id. Praesent tincidunt, dui ut varius pretium, ante nunc commodo enim, vel pharetra nisi erat sit amet orci. Integer nec congue lorem, sit amet facilisis diam. Vivamus vestibulum in velit a lacinia. Vivamus sit amet velit nunc.
-
-Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus rhoncus nulla eu lorem malesuada ornare. Quisque laoreet dolor et libero porta, sit amet laoreet eros viverra. Quisque dapibus sagittis metus, ultrices bibendum orci fermentum et. Fusce id mauris dictum, elementum magna non, imperdiet justo. Morbi a venenatis risus. Suspendisse vitae nulla et lectus egestas laoreet. Cras tincidunt felis id augue convallis tempor.
-				</p>
-				<div class="panel-footer post">
-					<a href="#" class="pull-right">Arthur Author - 2013-05-07</a>
-				</div>
-			</div>
-
-      <ul class="pager">
+    <?php 
+    foreach ($news as $post) {
+      $view->setData("post",$post);
+      $app->render("news-page.html");
+    }
+    ?>
+    
+    <ul class="pager">
       <li class="previous"><a href="#">&larr; Older</a></li>
       <li class="next"><a href="#">Newer &rarr;</a></li>
     </ul>
     </div>
-
 		<script src="./js/jquery.js"></script>
 		<script type="text/javascript" src="./js/bootstrap.min.js"></script>
 	</body>
