@@ -1,0 +1,64 @@
+<!DOCTYPE  HTML>
+<html lang="en">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<link rel="stylesheet" href="{{ root_uri }}css/bootstrap.min.css">
+		<link rel="stylesheet" href="{{ root_uri }}css/main.css">
+
+	</head>
+	<body style="padding-top: 70px;">
+
+		<div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" style="background: rgba(22,22,22,0.95)">
+			<div class="container">
+				<a class="navbar-brand" href="#">MAKT</a>
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="nav-collapse collapse bs-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">Start</a>
+						</li>
+						<li class="active">
+							<a href="#">Nyheter</a>
+						</li>
+						<li>
+							<a href="#">Om oss</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			{% for newsPost in news %}
+				{% include './news-post.html' %}
+			{% endfor %}
+
+			<ul class="pager">
+				{% if not(page_nbr > 1) %}
+				<li class="previous disabled">
+					<a>&larr; Older</a>
+				</li>
+				{% else %}
+				<li class="previous">
+					<a href="{{ page_nbr - 1 }}">&larr; Older</a>
+				</li>
+				{% endif %}
+				
+				{% if (page_nbr >= end_page) %}
+				<li class="next disabled">
+					<a>Newer &rarr;</a>
+				</li>
+				{% else %}
+				<li class="next">
+					<a href="{{page_nbr + 1}}">Newer &rarr;</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+		<script src="{{ root_uri }}js/jquery.js"></script>
+		<script type="text/javascript" src="{{ root_uri }}js/bootstrap.min.js"></script>
+	</body>
+</html>
