@@ -1,7 +1,10 @@
 <meta charset="utf-8">
 <?php
 require 'vendor/autoload.php';
-require "rb/rb.php";
+require 'rb/rb.php';
+require 'model/picture_post.class.php';
+
+
 
 R::setup("sqlite:db.db");
 /*$newsPost = R::dispense("news");
