@@ -11,6 +11,7 @@ require 'model/news.class.php';
 
 
 R::setup("sqlite:db.db");
+
 R::nuke();
 $root_uri = "http://".substr($_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'], 0, -9);
 
