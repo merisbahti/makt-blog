@@ -7,4 +7,6 @@ abstract class news_post {
 		$this->date 		= $date;
 		$this->author		= $author;
 	}
+	
+	abstract function render_content();
 }

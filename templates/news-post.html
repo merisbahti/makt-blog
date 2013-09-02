@@ -4,7 +4,7 @@
       <h1>{{ newsPost.title }} {{newsPost.id}}</h1>
       <h1 class="subheader"><small>{{ newsPost.subtext }}</small></h1>
     </div>
-      <img src="{{ root_uri }}img/WP_20130620_007.jpg" class="img-responsive"/>
+      {{ newsPost.render_content }}
       <p style="margin-top:0px;">
       {{ newsPost.body }}
       </p>

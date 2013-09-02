@@ -33,6 +33,7 @@
 		</div>
 		<div class="container">
 			{% for newsPost in news %}
+				{% set newsPost = newsPost %}
 				{% include './news-post.html' %}
 			{% endfor %}
 
