@@ -1,19 +1,17 @@
 <?php
 
-static class news {
+class news {
 	private static $amount = 5;
 	
 	public static function _getNbrOfPages(){
-		$amount = 5;
-		return R::count("news")/$amount;
+		return R::count("news")/self::$amount;
 	}
 
 	public static function _getNews($pageNumber) {
-		$amount = 5;
 		$nbr_of_posts = R::count("news");
 		$max = $nbr_of_posts - ($pageNumber - 1) * 5;
 		$min = $max - 5;
-		$news = R::findAll('news', ' WHERE id <= :max AND id > :min ORDER BY id DESC LIMIT :amount', array('max' => $max, 'min' => $min, 'amount' => $amount));		
+		$news = R::findAll('news', ' WHERE id <= :max AND id > :min ORDER BY id DESC LIMIT :amount', array('max' => $max, 'min' => $min, 'amount' => self::$amount));		
 		
 		return $news;
 	}
