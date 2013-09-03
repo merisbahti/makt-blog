@@ -1,8 +1,8 @@
 <?php
 class news_post {
-	function __construct($title, $subtext, $body, $date, $author, $rendered_content) {	
+	function __construct($title, $sub_text, $body, $date, $author, $rendered_content) {	
 		$this->title		= $title;
-		$this->subtext		= $subtext;
+		$this->sub_text		= $sub_text;
 		$this->body			= $body;
 		$this->date 		= $date;
 		$this->author		= $author;

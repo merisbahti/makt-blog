@@ -19,7 +19,7 @@ class news {
 	public static function _storeNewsPost($post, $root_uri) {
 		$newsPost = R::dispense("news");
 		$newsPost -> title = $post->title;
-		$newsPost -> subText = $post->subtext;
+		$newsPost -> sub_text = $post->sub_text;
 		$newsPost -> rendered_content= $post->rendered_content;
 		$newsPost -> body = $post->body;
 		$newsPost -> date = $post->date;
