@@ -45,6 +45,14 @@ $app->get('/news/:number',function($number) use($twig, $root_uri, $nbrOfPages) {
 		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => $number, 'nbr_of_pages' => $nbrOfPages));
     });
 
+$app->get('/admin', function () use ($twig, $root_uri) {
+		echo $twig->render('login-template.html', array('root_uri' => $root_uri));
+});
+
+$app->post('/login', function () {
+
+});
+
 $app->get('/testDB', function() use ($app) {
       $app->render('../model/test_db_init.php');
     });
