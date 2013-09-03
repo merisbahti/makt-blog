@@ -2,8 +2,8 @@
 <?php
 require 'vendor/autoload.php';
 require 'rb/rb.php';
-require 'model/picture_post.class.php';
 require 'model/news.class.php';
+require 'model/news_post.class.php';
 
 
 #$toDatabse = base64_encode(serialize($data));  // Save to database
@@ -12,7 +12,6 @@ require 'model/news.class.php';
 
 R::setup("sqlite:db.db");
 
-R::nuke();
 $root_uri = "http://".substr($_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'], 0, -9);
 
 $post = new news_post('Tim åker till gotland!',
