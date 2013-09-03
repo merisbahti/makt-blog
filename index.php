@@ -28,21 +28,21 @@ $app = new \Slim\Slim();
 $loader = new Twig_Loader_Filesystem('./templates');
 $twig = new Twig_Environment($loader);
 
+$nbrOfPages = news::_getNbrOfPages();
 
-
-$app->get('/', function() use ($twig, $root_uri) {
+$app->get('/', function() use ($twig, $root_uri, $nbrOfPages) {
 		$news = news::_getNews(1);
-		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => 1));
+		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => 1, 'nbr_of_pages' => $nbrOfPages));
     });
     
-$app->get('/news/', function() use ($twig,$root_uri) {
+$app->get('/news/', function() use ($twig,$root_uri, $nbrOfPages) {
 		$news = news::_getNews(1);
-		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => 1));
+		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => 1, 'nbr_of_pages' => $nbrOfPages));
     });
 
-$app->get('/news/page/:number',function($number) use($twig, $root_uri) {
+$app->get('/news/:number',function($number) use($twig, $root_uri, $nbrOfPages) {
 		$news = news::_getNews($number);
-		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => $number));
+		echo $twig->render('news-template.html', array('news' => $news, 'root_uri' => $root_uri, 'page_nbr' => $number, 'nbr_of_pages' => $nbrOfPages));
     });
 
 $app->get('/testDB', function() use ($app) {

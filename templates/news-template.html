@@ -17,23 +17,23 @@
 			{% endfor %}
 
 			<ul class="pager">
-				{% if not(page_nbr > 1) %}
-				<li class="previous disabled">
-					<a>&larr; Older</a>
+				{% if (page_nbr > 1) %}
+				<li class="previous">
+					<a href="{{ page_nbr - 1 }}">&larr; Newer</a>
 				</li>
 				{% else %}
-				<li class="previous">
-					<a href="{{ page_nbr - 1 }}">&larr; Older</a>
+				<li class="previous disabled">
+					<a>&larr; Newer</a>
 				</li>
 				{% endif %}
 				
-				{% if (page_nbr >= end_page) %}
-				<li class="next disabled">
-					<a>Newer &rarr;</a>
+				{% if not(page_nbr > (nbr_of_pages)) %}
+				<li class="next">
+					<a href="{{page_nbr + 1}}">Older &rarr;</a>
 				</li>
 				{% else %}
-				<li class="next">
-					<a href="{{page_nbr + 1}}">Newer &rarr;</a>
+				<li class="next disabled">
+					<a>Older &rarr;</a>
 				</li>
 				{% endif %}
 			</ul>

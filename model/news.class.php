@@ -1,6 +1,12 @@
 <?php
 
-class news {
+static class news {
+	private static $amount = 5;
+	
+	public static function _getNbrOfPages(){
+		$amount = 5;
+		return R::count("news")/$amount;
+	}
 
 	public static function _getNews($pageNumber) {
 		$amount = 5;
