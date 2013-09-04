@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 require 'rb/rb.php';
 require 'model/news.class.php';
 require 'model/news_post.class.php';
-
+require 'model/login_handler.class.php';
 
 #$toDatabse = base64_encode(serialize($data));  // Save to database
 #$fromDatabase = unserialize(base64_decode($data)); //Getting Save Format 
@@ -23,7 +23,8 @@ $post = new news_post('Tim åker till gotland!',
 
 news::_storeNewsPost($post, $root_uri);
 
-
+session_start();
+echo login_handler::verify();
 $app = new \Slim\Slim();
 $loader = new Twig_Loader_Filesystem('./templates');
 $twig = new Twig_Environment($loader);
@@ -49,10 +50,40 @@ $app->get('/admin', function () use ($twig, $root_uri) {
 		echo $twig->render('login-template.html', array('root_uri' => $root_uri));
 });
 
-$app->post('/login', function () {
 
+$app->get('/logout', function() {
+	login_handler::logout();
+	echo "utloggad!!!";
+});
+/* 
+** Tas bort. Testfunktioner till login.
+**
+*/
+$app->get('/login', function () {
+		echo login_handler::login('alfa','hej');
+		echo login_handler::verify();
 });
 
+$app->get('/sessions', function() {
+	$beans = R::findAll('session');
+		echo "Your session: " . session_id() . "<br>";
+	foreach ($beans as $session) {
+		foreach ($session as $value) {
+			echo $value . " ";
+		}
+		echo "<br>";
+	}
+});
+
+$app->get('/users', function() {
+	$beans = R::findAll('user');
+	foreach ($beans as $session) {
+		foreach ($session as $value) {
+			echo $value . " ";
+		}
+		echo "<br>";
+	}
+});
 $app->get('/testDB', function() use ($app) {
       $app->render('../model/test_db_init.php');
     });
