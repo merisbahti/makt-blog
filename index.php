@@ -6,10 +6,6 @@ require 'model/news.class.php';
 require 'model/news_post.class.php';
 require 'model/login_handler.class.php';
 
-#$toDatabse = base64_encode(serialize($data));  // Save to database
-#$fromDatabase = unserialize(base64_decode($data)); //Getting Save Format 
-
-
 R::setup("sqlite:db.db");
 
 $root_uri = "http://".substr($_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'], 0, -9);
