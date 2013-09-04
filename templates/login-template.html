@@ -2,14 +2,17 @@
 		{% include './header-template.html' %}
 		<div class="container">
 					<div class="well" style="width:360px;display:block; margin-right:auto; margin-left:auto; margin-top:auto;">
-						<form role="form">
+						<form role="form" action="./login" method="post">
 							<div class="form-group">
-								<label for="email">Email address</label>
-								<input type="email" class="form-control" id="email" placeholder="Enter email">
+								<label for="username">Username</label>
+								<input type="username" name="username" class="form-control" id="username" placeholder="Enter username">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label>
-								<input type="password" class="form-control" id="password" placeholder="Password">
+								<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+						 	</div>
+						 	<div class="form-group">
+						 		<input type="submit" class="btn" value="Log in">
 						 	</div>
 						 </form>
 			</div>

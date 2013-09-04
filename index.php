@@ -24,7 +24,6 @@ $post = new news_post('Tim åker till gotland!',
 news::_storeNewsPost($post, $root_uri);
 
 session_start();
-echo login_handler::verify();
 $app = new \Slim\Slim();
 $loader = new Twig_Loader_Filesystem('./templates');
 $twig = new Twig_Environment($loader);
@@ -51,18 +50,38 @@ $app->get('/admin', function () use ($twig, $root_uri) {
 });
 
 
+$app->post('/login', function () {
+	$username = $_POST['username'];
+	$pass     = $_POST['password'];
+	echo login_handler::login($username, $pass) . "<br>";
+	echo login_handler::verify();
+	echo "<a href='../makt'>Back!</a>";
+});
+
 $app->get('/logout', function() {
+	echo login_handler::verify();
 	login_handler::logout();
+	echo login_handler::verify();
 	echo "utloggad!!!";
+	echo "<a href='../makt'>Back!</a>";
 });
 /* 
 ** Tas bort. Testfunktioner till login.
 **
 */
-$app->get('/login', function () {
-		echo login_handler::login('alfa','hej');
-		echo login_handler::verify();
+
+$app->get('/populateUsers', function() {
+	R::wipe('user');
+	$user = R::dispense('user');
+	$user->username = "alpha";
+	$user->pass = hash('sha512', "hej");
+	R::store($user);
+	$user = R::dispense('user');
+	$user->username = "beta";
+	$user->pass = hash('sha512',"hello");
+	R::store($user);
 });
+
 
 $app->get('/sessions', function() {
 	$beans = R::findAll('session');
