@@ -49,9 +49,9 @@ $app->get('/admin', function () use ($twig, $root_uri) {
 $app->post('/login', function () {
 	$username = $_POST['username'];
 	$pass     = $_POST['password'];
-	echo login_handler::login($username, $pass) . "<br>";
-	echo login_handler::verify();
-	echo "<a href='../makt'>Back!</a>";
+	echo "Log in function return: " . login_handler::login($username, $pass) . "<br>";
+	echo "Log in status:" . login_handler::verify();
+	echo "<a href='../makt'>index!</a>";
 });
 
 $app->get('/logout', function() {
@@ -59,7 +59,7 @@ $app->get('/logout', function() {
 	login_handler::logout();
 	echo login_handler::verify();
 	echo "utloggad!!!";
-	echo "<a href='../makt'>Back!</a>";
+	echo "<a href='../makt'>index!</a>";
 });
 /* 
 ** Tas bort. Testfunktioner till login.
