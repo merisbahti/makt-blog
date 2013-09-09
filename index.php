@@ -45,7 +45,6 @@ $app->get('/admin', function () use ($twig, $root_uri) {
 		echo $twig->render('login-template.html', array('root_uri' => $root_uri));
 });
 
-
 $app->post('/login', function () {
 	$username = $_POST['username'];
 	$pass     = $_POST['password'];
@@ -60,6 +59,14 @@ $app->get('/logout', function() {
 	echo login_handler::verify();
 	echo "utloggad!!!";
 	echo "<a href='../makt'>index!</a>";
+});
+
+$app->get('/admintest', function() use ($twig, $root_uri){
+		echo $twig->render('admin-template.html', array('root_uri' => $root_uri));
+});
+
+$app->post('/create_post', function(){
+	echo "test";
 });
 /* 
 ** Tas bort. Testfunktioner till login.
