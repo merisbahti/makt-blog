@@ -8,4 +8,9 @@ class news_post {
 		$this->author		= $author;
 		$this->rendered_content = $rendered_content;
 	}
+	
+	public static function renderImgContent($url){
+		return '<img src="' .$url.'" class="img-responsive"/>';
+		
+	}
 }
