@@ -2,6 +2,12 @@
 		{% include './header-template.html' %}
 		<div class="container">
 					<div class="well" style="width:360px;display:block; margin-right:auto; margin-left:auto; margin-top:auto;">
+						{% if error_msg != "" %}
+						<div class="alert alert-danger">
+  							<button type="button" class="close" data-dismiss="alert">&times;</button>
+  							{{ error_msg }}
+						</div>
+						{% endif %}
 						<form role="form" action="./login" method="post">
 							<div class="form-group">
 								<label for="username">Username</label>
