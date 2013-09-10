@@ -1,5 +1,6 @@
 <?php
 class login_handler {
+
 	/*
 	 * Checks DB if valid user & pass.
 	 * Sets OR returns session id. Probably sets. Kthxbai.
@@ -47,5 +48,15 @@ class login_handler {
 		return false;
 	}
 
+/*
+   * Gets the currently logged in users name.
+   */
+  public static function get_user_name() {
+  	$user = R::findOne('session', 'session_id = ?', array(session_id()));
+  	if (is_null($user) ||  !login_handler::verify()) {
+  		return false;
+  	}
+	return $user->username;
+  }
 }
 ?>
