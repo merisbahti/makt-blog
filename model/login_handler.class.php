@@ -43,6 +43,17 @@ class login_handler {
     if (!is_null($session_bean)) return true; 
     return false;
   }
+  
+  /*
+   * Gets the currently logged in users name.
+   */
+  public static function get_user_name() {
+  	$user = R::findOne('session', 'session_id = ?', array(session_id()));
+  	if (is_null($user) ||  !login_handler::verify()) {
+  		return false;
+  	}
+	return $user->username;
+  }
 
 }
 ?>
