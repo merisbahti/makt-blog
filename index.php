@@ -37,23 +37,35 @@ $app->get('/news/:number', function($number) use($twig, $nbrOfPages) {
     });
 
 $app->get('/admin', function () use ($twig) {
-		echo $twig->render('login-template.html', array());
+		
+    
+	if(login_handler::verify() == 1){
+		echo $twig -> render('admin-template.html', array());
+	}else{
+    echo $twig->render('login-template.html', array());
+  }
 });
 
 $app -> get('/login', function() use ($twig) {
-	$error_msg = "";
-	if (isset($_SESSION['slim.flash']['error'])) {
-		$error_msg = $_SESSION['slim.flash']['error'];
-	}
-	echo $twig -> render('login-template.html', array("error_msg" => $error_msg));
-});
+	
+    
+    if(login_handler::verify() == 1){
+      echo $twig -> render('admin-template.html', array());
+    }else{
+    $error_msg = "";
+    if (isset($_SESSION['slim.flash']['error'])) {
+      $error_msg = $_SESSION['slim.flash']['error'];
+    }
+    echo $twig -> render('login-template.html', array("error_msg" => $error_msg));
+    }
+  });
 
 $app -> post('/login', function() use ($app, $twig){
 	$username = $_POST['username'];
 	$pass = $_POST['password'];
 	
 	login_handler::login($username, $pass);
-	if(login_handler::verify()){
+	if(login_handler::verify() == 1){
 		echo $twig -> render('admin-template.html', array());
 	}else{
 		$app->flash("error", "Wrong username/password combination.");
@@ -98,7 +110,7 @@ function upload_file($file, $root_uri, $post_id) {
 		$file_size = $file['size'];
 		$file_tmp = $file['tmp_name'];
 		$file_type = $file['type'];
-		$file_ext = strtolower(end(explode('.', $file['name'])));
+		$file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 		$extensions = array("jpeg", "jpg", "png");
 		if (in_array($file_ext, $extensions) === false) {
 			$errors[] = "extension not allowed, please choose a JPEG or PNG file.";
