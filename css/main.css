@@ -29,3 +29,7 @@
 .container {
 	max-width: 960px;
 }
+
+img {
+width:100%;
+}
